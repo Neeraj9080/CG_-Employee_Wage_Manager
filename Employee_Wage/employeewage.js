@@ -99,13 +99,13 @@ console.log(fullDayWageArr);
 
 // UC 7D - Find the first occurrence when Full Time Wage was earned using find function
 function findFulltimeWage(dailyWage) {
-    return dailyWage.includes("160");
+    return dailyWage === 160;
 }
 console.log("UC 7D - First time Fulltime wage was earned on Day : " + mapDayWithWageArr.find(findFulltimeWage));
 
 // UC 7E - Check if Every Element of Full Time Wage is truly holding Full time wage
 function isAllFulltimeWage(dailyWage) {
-    return dailyWage.includes("160");
+    return dailyWage === 160;
 }
 console.log("UC 7E - Check All Elements have Full Time Wage : " + fullDayWageArr.every(isAllFulltimeWage));
 
@@ -121,3 +121,12 @@ function totalDaysWorked(numOfDays, dailyWage) {
     return numOfDays;
 }
 console.log("UC 7G - Number of Days Employee Worked : " + empDailyWageArr.reduce(totalDaysWorked, 0));
+
+// UC 8
+let empDailyWageMap = new Map();
+function totalWagesMap(totalWage, dailyWage) {
+    return totalWage + dailyWage;
+}
+
+empDailyWageMap.set(totalWorkingDays, empDailyWageArr.reduce(totalWagesMap, 0));
+console.log("Emp Wage Map totalHrs : " + Array.from(empDailyWageArr.keys()).reduce(totalWagesMap, 0));
